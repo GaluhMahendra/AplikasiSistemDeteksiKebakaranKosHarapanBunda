@@ -3,8 +3,10 @@ package com.example.aplikasisistemdeteksikebakarankosharapanbunda;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.widget.TextView;
 
 public class Beranda_Activity extends AppCompatActivity {
@@ -37,5 +39,10 @@ public class Beranda_Activity extends AppCompatActivity {
         // Mengembang menu; ini menambahkan item ke bilah tindakan jika ada.
         getMenuInflater().inflate(R.menu.menu_main, menu);
         return true;
+    }
+
+    public void KlikPengaturan(MenuItem item) {
+        Intent Pengaturan = new Intent(Beranda_Activity.this, Pengaturan_Activity.class);
+        startActivity(Pengaturan);
     }
 }
