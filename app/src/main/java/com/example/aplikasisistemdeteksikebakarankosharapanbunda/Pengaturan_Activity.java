@@ -14,7 +14,7 @@ public class Pengaturan_Activity extends AppCompatActivity {
         setContentView(R.layout.activity_pengaturan);
 
         // Temukan tampilan bilah alat di dalam tata letak aktivitas
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbarBeranda);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbarPengaturan);
         // Menyetel Toolbar untuk bertindak sebagai ActionBar untuk jendela Aktivitas ini.
         // Pastikan toolbar ada dalam aktivitas dan bukan null
         setSupportActionBar(toolbar);
@@ -22,7 +22,7 @@ public class Pengaturan_Activity extends AppCompatActivity {
         // Menghapus title default
         getSupportActionBar().setDisplayShowTitleEnabled(false);
         // Mengambil akses TextView yang ada di dalam Toolbar
-        TextView mTitle = (TextView) toolbar.findViewById(R.id.textToolbarBeranda);
+        TextView mTitle = (TextView) toolbar.findViewById(R.id.textToolbarPengaturan);
 
         // Menampilkan ikon di Toolbar
         getSupportActionBar().setDisplayShowHomeEnabled(true);

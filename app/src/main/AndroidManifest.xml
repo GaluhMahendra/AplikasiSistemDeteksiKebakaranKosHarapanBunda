@@ -9,11 +9,18 @@
         android:roundIcon="@mipmap/logoicon"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Pengaturan_Activity"></activity>
-        <activity android:name=".Beranda_Activity"></activity>
+        <activity
+            android:name=".Pengaturan_Activity"
+            android:screenOrientation="portrait">
+        </activity>
+        <activity
+            android:name=".Beranda_Activity"
+            android:screenOrientation="portrait">
+        </activity>
         <activity
             android:name=".Splash_Activity"
-            android:theme="@style/ThemeSplashScreen">
+            android:theme="@style/ThemeSplashScreen"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

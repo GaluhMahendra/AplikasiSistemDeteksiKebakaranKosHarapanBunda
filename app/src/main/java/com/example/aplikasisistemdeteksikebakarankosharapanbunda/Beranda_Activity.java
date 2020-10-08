@@ -40,9 +40,11 @@ public class Beranda_Activity extends AppCompatActivity {
         getMenuInflater().inflate(R.menu.menu_main, menu);
         return true;
     }
-
-    public void KlikPengaturan(MenuItem item) {
-        Intent Pengaturan = new Intent(Beranda_Activity.this, Pengaturan_Activity.class);
-        startActivity(Pengaturan);
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == R.id.menuPengaturan) {
+            startActivity(new Intent(this, Pengaturan_Activity.class));
+        }
+        return true;
     }
 }

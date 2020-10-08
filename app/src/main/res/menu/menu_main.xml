@@ -5,8 +5,7 @@
         android:id="@+id/menuPengaturan"
         android:icon="@drawable/menu"
         app:showAsAction="ifRoom"
-        android:title="Pengaturan"
-        android:onClick="KlikPengaturan">
+        android:title="Pengaturan">
     </item>
 
 </menu>

@@ -35,5 +35,6 @@
                 android:layout_gravity="center">
             </TextView>
         </androidx.appcompat.widget.Toolbar>
+
     </LinearLayout>
 </RelativeLayout>
