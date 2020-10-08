@@ -9,9 +9,8 @@
         android:roundIcon="@mipmap/logoicon"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity
-            android:name=".Beranda_Activity">
-        </activity>
+        <activity android:name=".Pengaturan_Activity"></activity>
+        <activity android:name=".Beranda_Activity"></activity>
         <activity
             android:name=".Splash_Activity"
             android:theme="@style/ThemeSplashScreen">

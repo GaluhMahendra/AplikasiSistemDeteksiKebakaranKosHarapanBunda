@@ -2,4 +2,5 @@
     <string name="app_name">Boarding House Fire Warning</string>
     <string name="SplashScreen">SplashScreen</string>
     <string name="textSplash">Boarding House \n Fire Warning</string>
+    <string name="textPengaturan">Pengaturan</string>
 </resources>
