@@ -2,6 +2,10 @@ package com.example.aplikasisistemdeteksikebakarankosharapanbunda;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentPagerAdapter;
+import androidx.viewpager.widget.ViewPager;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -9,42 +13,82 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
 
+import com.example.aplikasisistemdeteksikebakarankosharapanbunda.Fragment.Pengaturan_Fragment;
+import com.example.aplikasisistemdeteksikebakarankosharapanbunda.Fragment.Room_Fragment;
+import com.google.android.material.tabs.TabLayout;
+
+import java.util.ArrayList;
+import java.util.List;
+
 public class Beranda_Activity extends AppCompatActivity {
+    private TabLayout tab;
+    private ViewPager viewPager;
+    private Toolbar toolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_beranda);
+        tab = findViewById(R.id.tabBeranda);
+        viewPager = findViewById(R.id.viewPagerBeranda);
+        toolbar = findViewById(R.id.toolbarBeranda);
 
-        // Temukan tampilan bilah alat di dalam tata letak aktivitas
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbarBeranda);
-        // Menyetel Toolbar untuk bertindak sebagai ActionBar untuk jendela Aktivitas ini.
-        // Pastikan toolbar ada dalam aktivitas dan bukan null
         setSupportActionBar(toolbar);
-
-        // Menghapus title default
         getSupportActionBar().setDisplayShowTitleEnabled(false);
-        // Mengambil akses TextView yang ada di dalam Toolbar
-        TextView mTitle = (TextView) toolbar.findViewById(R.id.textToolbarBeranda);
+        toolbar.setLogo(getResources().getDrawable(R.mipmap.logo));
 
-        // Menampilkan ikon di Toolbar
-        getSupportActionBar().setDisplayShowHomeEnabled(true);
-        getSupportActionBar().setLogo(R.mipmap.logo);
-        getSupportActionBar().setDisplayUseLogoEnabled(true);
+        tab.setupWithViewPager(viewPager);
+        SetupViewPager();
+        tab.setOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+            @Override
+            public void onTabSelected(TabLayout.Tab tab) {
+                viewPager.setCurrentItem(tab.getPosition());
+            }
+
+            @Override
+            public void onTabUnselected(TabLayout.Tab tab) {
+
+            }
+
+            @Override
+            public void onTabReselected(TabLayout.Tab tab) {
+
+            }
+        });
     }
 
-    // Ikon menu digelembungkan seperti pada bilah tindakan
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Mengembang menu; ini menambahkan item ke bilah tindakan jika ada.
-        getMenuInflater().inflate(R.menu.menu_main, menu);
-        return true;
+    private void SetupViewPager() {
+        MyViewPagerAdapter adapter = new MyViewPagerAdapter(getSupportFragmentManager());
+        adapter.AddFragment(new Room_Fragment(), "Room");
+        adapter.AddFragment(new Pengaturan_Fragment(), "Pengaturan");
+        viewPager.setAdapter(adapter);
     }
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        if (item.getItemId() == R.id.menuPengaturan) {
-            startActivity(new Intent(this, Pengaturan_Activity.class));
+
+    private class MyViewPagerAdapter extends FragmentPagerAdapter {
+        private List<Fragment> fr = new ArrayList<>();
+        private List<String> title = new ArrayList<>();
+        public MyViewPagerAdapter(FragmentManager manager) {
+            super(manager);
         }
-        return true;
+
+        public void AddFragment(Fragment fragment, String jd) {
+            fr.add(fragment);
+            this.title.add(jd);
+        }
+
+        @Override
+        public Fragment getItem(int position){
+            return fr.get(position);
+        }
+
+        @Override
+        public CharSequence getPageTitle(int position){
+            return title.get(position);
+        }
+
+        @Override
+        public int getCount() {
+            return 2;
+        }
     }
 }
