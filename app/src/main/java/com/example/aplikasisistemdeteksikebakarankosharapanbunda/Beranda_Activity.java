@@ -7,11 +7,13 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
-import android.content.Intent;
+import android.content.Context;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
-import android.widget.TextView;
+import android.view.View;
+import android.widget.Button;
+import android.widget.Toast;
 
 import com.example.aplikasisistemdeteksikebakarankosharapanbunda.Fragment.Pengaturan_Fragment;
 import com.example.aplikasisistemdeteksikebakarankosharapanbunda.Fragment.Room_Fragment;
@@ -32,6 +34,20 @@ public class Beranda_Activity extends AppCompatActivity {
         tab = findViewById(R.id.tabBeranda);
         viewPager = findViewById(R.id.viewPagerBeranda);
         toolbar = findViewById(R.id.toolbarBeranda);
+
+        Button btnCheck = (Button) findViewById(R.id.btnCekJaringan);
+        btnCheck.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ConnectivityManager cm = (ConnectivityManager) getApplication().getSystemService(Context.CONNECTIVITY_SERVICE);
+                NetworkInfo netInfo = cm.getActiveNetworkInfo();
+                if (netInfo != null && netInfo.isConnected()) {
+                    Toast.makeText(getApplication(), "Anda terhubung ke "+netInfo.getTypeName()+" "+netInfo.getSubtypeName(), Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(getApplication(), "Anda tidak memiliki koneksi jaringan.", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
 
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayShowTitleEnabled(false);

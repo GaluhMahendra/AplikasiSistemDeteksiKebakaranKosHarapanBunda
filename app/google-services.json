@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "660151830762",
+    "firebase_url": "https://dbsistemdeteksikebakaran.firebaseio.com",
+    "project_id": "dbsistemdeteksikebakaran",
+    "storage_bucket": "dbsistemdeteksikebakaran.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:660151830762:android:c063ffa5f29a4d13296f93",
+        "android_client_info": {
+          "package_name": "com.example.aplikasisistemdeteksikebakarankosharapanbunda"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "660151830762-8sipnmnep7sn1iuso0bruvvpkj0n7n51.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBe_bKA-lvFXxyuSAkrriVmSmlkoTlgPRg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "660151830762-8sipnmnep7sn1iuso0bruvvpkj0n7n51.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
