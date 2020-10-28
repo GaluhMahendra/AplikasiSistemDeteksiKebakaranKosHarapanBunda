@@ -6,4 +6,5 @@
     <color name="colorTextTab">#C68989</color>
     <color name="backgroundRoom">#109C00</color>
     <color name="backgroundPengaturan">#0073AF</color>
+    <color name="colorActBtn">#8B0808</color>
 </resources>

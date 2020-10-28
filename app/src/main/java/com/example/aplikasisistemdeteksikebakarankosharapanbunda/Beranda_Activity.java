@@ -11,8 +11,6 @@ import android.content.Context;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.Button;
 import android.widget.Toast;
 
 import com.example.aplikasisistemdeteksikebakarankosharapanbunda.Fragment.Pengaturan_Fragment;
@@ -35,19 +33,11 @@ public class Beranda_Activity extends AppCompatActivity {
         viewPager = findViewById(R.id.viewPagerBeranda);
         toolbar = findViewById(R.id.toolbarBeranda);
 
-        Button btnCheck = (Button) findViewById(R.id.btnCekJaringan);
-        btnCheck.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                ConnectivityManager cm = (ConnectivityManager) getApplication().getSystemService(Context.CONNECTIVITY_SERVICE);
-                NetworkInfo netInfo = cm.getActiveNetworkInfo();
-                if (netInfo != null && netInfo.isConnected()) {
-                    Toast.makeText(getApplication(), "Anda terhubung ke "+netInfo.getTypeName()+" "+netInfo.getSubtypeName(), Toast.LENGTH_SHORT).show();
-                } else {
-                    Toast.makeText(getApplication(), "Anda tidak memiliki koneksi jaringan.", Toast.LENGTH_SHORT).show();
-                }
-            }
-        });
+        if (cek_status(this)){
+            // ada koneksi internet
+        } else {
+            // tidak ada koneksi internet
+        }
 
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
@@ -60,17 +50,28 @@ public class Beranda_Activity extends AppCompatActivity {
             public void onTabSelected(TabLayout.Tab tab) {
                 viewPager.setCurrentItem(tab.getPosition());
             }
-
             @Override
             public void onTabUnselected(TabLayout.Tab tab) {
-
             }
-
             @Override
             public void onTabReselected(TabLayout.Tab tab) {
-
             }
         });
+    }
+
+    private boolean cek_status(Beranda_Activity beranda_activity) {
+        boolean connectStatus = true;
+        ConnectivityManager ConnectionManager=(ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo networkInfo=ConnectionManager.getActiveNetworkInfo();
+        if(networkInfo != null && networkInfo.isConnected()==true ) {
+            connectStatus = true;
+            Toast.makeText(getApplication(), "Anda terhubung ke "+networkInfo.getTypeName()+" "+networkInfo.getSubtypeName(), Toast.LENGTH_SHORT).show();
+        }
+        else {
+            connectStatus = false;
+            Toast.makeText(getApplication(), "Anda tidak memiliki koneksi jaringan.", Toast.LENGTH_SHORT).show();
+        }
+        return connectStatus;
     }
 
     private void SetupViewPager() {
